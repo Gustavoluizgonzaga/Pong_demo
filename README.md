@@ -1,4 +1,4 @@
-# Jogo Pong – Projeto de Lógica
+# Jogo Pong – Projeto de Lógica - Feito no curso CS50
 
 Projeto desenvolvido para praticar lógica de programação por meio da criação de um jogo simples inspirado no clássico Pong.
 

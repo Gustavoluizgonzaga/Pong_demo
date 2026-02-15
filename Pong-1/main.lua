@@ -7,16 +7,12 @@ VIRTUAL_WIDTH = 432
 VIRTUAL_HEIGHT = 243
 
 --[[
-    Runs when the game first starts up, only once; used to initialize the game.
+    Executado quando o jogo comea pela primeira vez, apenas uma vez; usado para inicializar o jogo.
 ]]
 function love.load()
-    -- use nearest-neighbor filtering on upscaling and downscaling to prevent blurring of text 
-    -- and graphics; try removing this function to see the difference!
+    -- usado para prevenir o borramento do texto e do gráfico
     love.graphics.setDefaultFilter('nearest', 'nearest')
 
-    -- initialize our virtual resolution, which will be rendered within our
-    -- actual window no matter its dimensions; replaces our love.window.setMode call
-    -- from the last example
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         resizable = false,
@@ -25,29 +21,23 @@ function love.load()
 end
 
 --[[
-    Keyboard handling, called by LÖVE2D each frame; 
-    passes in the key we pressed so we can access.
+    Chamado quando a tecla for pressionada, usado para capturar o input do jogador,
+    ou para sair do jogo.
 ]]
 function love.keypressed(key)
-    -- keys can be accessed by string name
     if key == 'escape' then
-        -- function LÖVE gives us to terminate application
         love.event.quit()
     end
 end
 
 --[[
-    Called after update by LÖVE2D, used to draw anything to the screen, 
-    updated or otherwise.
+    Usado para desenhar qualquer coisa na tela, independentemente de ter sido atualizado ou não.
 ]]
 function love.draw()
-    -- begin rendering at virtual resolution
     push:apply('start')
 
-    -- condensed onto one line from last example
-    -- note we are now using virtual width and height now for text placement
     love.graphics.printf('Hello Pong!', 0, VIRTUAL_HEIGHT / 2 - 6, VIRTUAL_WIDTH, 'center')
 
-    -- end rendering at virtual resolution
+    -- termina a renderização
     push:apply('end')
 end
